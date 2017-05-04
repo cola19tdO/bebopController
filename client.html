@@ -1,53 +1,53 @@
 <!DOCTYPE html>
 <html>
-  <body>
-    <script src="/socket.io/socket.io.js"></script>
- 
+<head>
+  <style>
+   #map {
+    height: 400px;
+    width: 100%;
+  }
+</style>
+
+</head>
+<body>
+  <script src="/socket.io/socket.io.js"></script>
+
   <script src="/jquery.js"></script>
-    <script>
-    var socket = io();
-   
-    var takeOff = function() {
-      console.log("takeoff func");
-      socket.emit('takeOff', 'takeOff msg');
-    }
-
-    var landing = function(){
-       console.log("landing func");
-      socket.emit('landing', 'landing msg');
-    }
-
-    var left = function(){
-       console.log("left func");
-      socket.emit('left', 'left msg');
-    }
-
-    var right = function(){
-       console.log("right func");
-      socket.emit('right', 'right msg');
-    }
-
-    socket.on('batteryLevel', function(data){
-        $("#batteryLevel").text("Battery level: " + data);
-    });
-   
-    
-
-    </script>
-   
-
-      <p id="batteryLevel">Battery level: -</p>
-
-     <button onclick="takeOff()">take off</button> 
-
-     <button onclick="landing()">landing</button> 
-</br>
-      <button onclick="left()">Left</button> 
-
-      <button onclick="right()">Right</button> 
+  <script src="/bebop.js"></script>
 
 
-     
+    <p id="batteryLevel">Battery level: -</p>
+    <p id="gps">GPS: -</p>
+    <p id="speed">Actual speed: -</p>
+    <p id="operation">Actual operation: -</p>
 
-  </body>
+    <button onclick="takeOff()">take off</button> 
+
+    <button onclick="landing()">landing</button> 
+  </br>
+  <button onclick="left()">Left</button> 
+
+  <button onclick="right()">Right</button> 
+
+
+  <p>Obsluga:</p>
+  <div>
+    up - go forward</br>
+    down - go backward</br>
+    left - go left </br>
+    right - go right </br>
+    space - land </br>
+    1 - increase speed</br>
+    2 - decrease speed</br>
+    w - go up </br>
+    s - go down </br>
+    a - rotate clockwise </br>
+    d - rotate counterclockwize </br>
+    b - flip</br>
+    l - stop</br>
+
+  </div>
+
+
+</body>
 </html>
